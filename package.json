@@ -12,7 +12,7 @@
     "@types/express": "^4.16.1"
   },
   "scripts": {
-    "start": "npm install & tsc & node dist/main"
+    "start": "npm install & npx tsc & node dist/main"
   },
   "repository": {
     "type": "git",
