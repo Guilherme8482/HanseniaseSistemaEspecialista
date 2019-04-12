@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "get-port": "^5.0.0",
     "typescript": "^3.4.2"
   },
   "devDependencies": {
