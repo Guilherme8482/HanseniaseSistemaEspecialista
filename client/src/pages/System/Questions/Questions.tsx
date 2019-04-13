@@ -14,7 +14,7 @@ const style: {[id: string]: CSSProperties} = {
 }
 export class Questions extends Component{
     render(){
-        const { system: { questionGroups }} = State.language.getLanguageObject()
+        const { system: { questionGroups }} = State.language.languageObject
         const newQuestions = questionGroups.slice()
         const genetics = newQuestions.pop()
         if(genetics === undefined)

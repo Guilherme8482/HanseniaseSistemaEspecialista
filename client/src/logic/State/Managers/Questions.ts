@@ -1,11 +1,10 @@
-import { DatabaseFilter } from "./DatabaseFilter";
 import { State } from "../Global";
 
 export class QuestionsState {
-    private answers: number[] = this.getStoredAnswers()
+    readonly answers: number[] = this.storedAnswers
     private answerListeners: ((value: number) => void)[] = []
 
-    private getStoredAnswers(): number[]{
+    private get storedAnswers(): number[]{
         const value = localStorage.getItem('storedAnswer') || '[]'
         return JSON.parse(value)
     }
@@ -35,8 +34,5 @@ export class QuestionsState {
     }
     setAnswerListener(id: number, listener: (value: number) => void){
         this.answerListeners[id] = listener
-    }
-    getAnswers(){
-        return this.answers
     }
 }

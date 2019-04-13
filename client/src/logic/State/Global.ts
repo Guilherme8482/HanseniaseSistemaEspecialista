@@ -7,5 +7,5 @@ export class State {
     static language = new LanguageManager
     static flags = new Flags
     static databaseFilter = new DatabaseFilter
-    static question = new QuestionsState
+    static questions = new QuestionsState
 }

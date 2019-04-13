@@ -41,7 +41,7 @@ export class Select extends Component <{
     render(){
         const { action, options} = this.props
         const { state: { isMouseHover } } = this
-        const value = State.databaseFilter.getDatabaseId()
+        const value = State.databaseFilter.databaseId
         const dinamic = {
             container: {
                 ...style.container,

@@ -4,7 +4,7 @@ import { State } from '../../logic/State/Global';
 
 export class Article extends Component{
     render(){
-        const { article: { title, content }} = State.language.getLanguageObject()
+        const { article: { title, content }} = State.language.languageObject
         return <Text title={title} content={content}/>
     }
 }

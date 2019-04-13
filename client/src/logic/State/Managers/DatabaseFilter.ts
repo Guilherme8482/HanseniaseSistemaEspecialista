@@ -4,19 +4,16 @@ import { State } from '../Global';
 
 export class DatabaseFilter{
     private answerListeners: ((value: boolean) => void)[] = []
-    private databaseId = this.getStoredDatabaseId()
 
-    getStoredDatabaseId(): string{
+    get databaseId(): string{
         const data = localStorage.getItem('databaseId')
-        return JSON.parse(data || 'null')
+        return JSON.parse(data || 'null') || QuestionsByDatabase.defaultDatabaseId
     }
-    getDatabaseId(){
-        return this.databaseId
-    }
-    setDatabaseId(id: string){
+    set databaseId(id: string){
+        if(!QuestionsByDatabase.idList.includes(id))
+            throw new Error('Database id unavailable. id = ' + id)
         if(State.flags.isToSaveData)
             localStorage.setItem('databaseId', JSON.stringify(id))
-        this.databaseId = id
     }
     convertDatabaseIdForNeticaCode(){
         const id = QuestionsByDatabase.idList.indexOf(this.databaseId)
@@ -30,13 +27,13 @@ export class DatabaseFilter{
     }
     refreshDatabase(databaseId: string){
         const questionsAlowed = QuestionsByDatabase.get(databaseId)
-        this.setDatabaseId(databaseId)
+        this.databaseId = databaseId
         for(const [index, action] of this.answerListeners.entries()){
             const questionAllowed = questionsAlowed.includes(index)
             if(action)
                 action(!questionAllowed)
             if(!questionAllowed)
-                State.question.setAnswer(index, -1)
+                State.questions.setAnswer(index, -1)
         }
         State.flags.startDiagnosis()
     }

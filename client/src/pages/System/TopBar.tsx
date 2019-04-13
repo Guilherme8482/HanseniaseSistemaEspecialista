@@ -26,11 +26,11 @@ const style: {[id: string]: CSSProperties} = {
 }
 export class TopBar extends Component{
     clearAnswers(){
-        State.question.clearAnswers()
+        State.questions.clearAnswers()
         State.flags.startDiagnosis()
     }
     render(){
-        const { system: { topBar: { database, clearButton, rememberInformation}}} = State.language.getLanguageObject()
+        const { system: { topBar: { database, clearButton, rememberInformation}}} = State.language.languageObject
         return <div style={style.container}>
             <div style={style.side}>
                 <div style={style.font}>{database.label}</div>

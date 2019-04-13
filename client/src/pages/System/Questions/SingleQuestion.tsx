@@ -25,16 +25,16 @@ interface Props {
 export class SingleQuestion extends Component<Props>{
     state = {
         disabled: false,
-        value: State.question.getAnswer(this.props.question.id)
+        value: State.questions.getAnswer(this.props.question.id)
     }
     componentWillMount(){
         const id = this.props.question.id
-        State.question.setAnswerListener(id, value => this.setState({value}))
+        State.questions.setAnswerListener(id, value => this.setState({value}))
         State.databaseFilter.setAnswerListener(id, disabled => this.setState({disabled}))
     }
     handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const { question: { id }} = this.props
-        State.question.setAnswer(id, Number(event.target.value))
+        State.questions.setAnswer(id, Number(event.target.value))
         State.flags.startDiagnosis()
     }
     render(){

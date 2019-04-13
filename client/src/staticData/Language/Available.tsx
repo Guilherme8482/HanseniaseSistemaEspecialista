@@ -17,7 +17,7 @@ export class LanguageAvailable {
     static defaultLanguageId(){
         return LanguageAvailable.idList[0]
     }
-    static getDictionaryList(){
+    static get dictionaryList(){
         return LanguageAvailable.idList.map(id => ({
             id,
             value: LanguageAvailable.list[id].meta.displayName

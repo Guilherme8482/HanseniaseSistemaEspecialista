@@ -2,18 +2,18 @@ import { LanguageAvailable } from "../../../staticData/Language/Available";
 
 export class LanguageManager{
 
-    getLanguageObject(){
-        return LanguageAvailable.get(this.getStoredLanguageId())
+    get languageObject(){
+        return LanguageAvailable.get(this.storedLanguageId)
     }
-    getStoredLanguageId(){
+    get storedLanguageId(){
         return localStorage.getItem('languageId') || LanguageAvailable.defaultLanguageId()
     }
-    setStoredLanguageId(id: string){
+    set storedLanguageId(id: string){
         localStorage.setItem('languageId', id)
     }
-    setLanguage(id: string){
+    set languageId(id: string){
         LanguageAvailable.get(id)
-        this.setStoredLanguageId(id)
+        this.storedLanguageId = id
         document.location.reload(true)
     }
 }

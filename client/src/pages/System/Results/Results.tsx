@@ -51,7 +51,7 @@ export class Results extends Component{
     }
     async getData(): Promise<{results: number[]}>{
         const dbId = State.databaseFilter.convertDatabaseIdForNeticaCode()
-        const data = [...State.question.getAnswers(), dbId]
+        const data = [...State.questions.answers, dbId]
         const res = await EndPoints.process(data)
         return {
             results: [res.sr, res.r1, res.r2]
@@ -87,7 +87,7 @@ export class Results extends Component{
         return greater.index
     }
     render(){
-        const { system: { reults }, logs: { loadingAlt }, error: { badResult }} = State.language.getLanguageObject()
+        const { system: { reults }, logs: { loadingAlt }, error: { badResult }} = State.language.languageObject
         const { results, isLoading, haveAnError } = this.state
         const dinamic = {
             loading: {

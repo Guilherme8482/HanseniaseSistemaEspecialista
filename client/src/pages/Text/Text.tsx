@@ -57,7 +57,7 @@ interface Props{
 }
 export class Text extends Component<Props>{
     render(){
-        const { tipBox: { description, buttonName }} = State.language.getLanguageObject()
+        const { tipBox: { description, buttonName }} = State.language.languageObject
         const { title, content} = this.props
         return <div style={style.container}>
             <div style={style.content}>

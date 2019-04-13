@@ -18,7 +18,7 @@ const style: {[id: string]: CSSProperties} = {
 }
 export class Footer extends Component{
     render(){
-        const { footer: { content } } = State.language.getLanguageObject()
+        const { footer: { content } } = State.language.languageObject
         return <footer  style={style.footer}>
             {content}
         </footer >

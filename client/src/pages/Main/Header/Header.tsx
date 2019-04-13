@@ -41,7 +41,7 @@ const style: {[id: string]: CSSProperties} = {
 }
 export class Header extends Component {
     render(){
-        const { header: { title, menus} } = State.language.getLanguageObject()
+        const { header: { title, menus} } = State.language.languageObject
         return <div style={style.container}>
             <div style={style.content}>
                 <div style={style.title}>
@@ -52,9 +52,9 @@ export class Header extends Component {
                     <Option path='system' label={menus.system}/>
                     <Option path='article' label={menus.article}/>
                     <SelectOption
-                        action={State.language.setLanguage}
-                        options={LanguageAvailable.getDictionaryList()}
-                        value={State.language.getStoredLanguageId()}
+                        action={v => State.language.languageId = v}
+                        options={LanguageAvailable.dictionaryList}
+                        value={State.language.storedLanguageId}
                     />
                 </div>
             </div>
