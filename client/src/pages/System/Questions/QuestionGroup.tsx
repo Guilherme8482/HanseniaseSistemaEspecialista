@@ -1,6 +1,6 @@
 import React, { Component, CSSProperties } from 'react'
 import { SingleQuestion } from './SingleQuestion';
-import { QuestionGroup as QG } from '../../../language/Pattern'
+import { QuestionGroup as QG } from '../../../staticData/Language/Pattern'
 
 const style: {[id: string]: CSSProperties} = {
     container: {

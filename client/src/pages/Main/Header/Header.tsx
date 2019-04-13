@@ -1,8 +1,8 @@
 import React, { Component, CSSProperties } from 'react'
 import { Option } from './Option';
 import { SelectOption } from './SelectOption';
-import { LanguageManager } from '../../../logic/LanguageManager';
-import { DatabaseFilter } from '../../../logic/DatabaseFilter';
+import { State } from '../../../logic/State/Global';
+import { LanguageAvailable } from '../../../staticData/Language/Available';
 
 const style: {[id: string]: CSSProperties} = {
     container: {
@@ -39,10 +39,9 @@ const style: {[id: string]: CSSProperties} = {
         alignItems: 'center',
     },
 }
-
 export class Header extends Component {
     render(){
-        const { header: { title, menus} } = LanguageManager.getLanguageObject()
+        const { header: { title, menus} } = State.language.getLanguageObject()
         return <div style={style.container}>
             <div style={style.content}>
                 <div style={style.title}>
@@ -53,9 +52,9 @@ export class Header extends Component {
                     <Option path='system' label={menus.system}/>
                     <Option path='article' label={menus.article}/>
                     <SelectOption
-                        action={LanguageManager.setLanguage}
-                        options={LanguageManager.getDictionaryList()}
-                        value={LanguageManager.getStoredLanguageId()}
+                        action={State.language.setLanguage}
+                        options={LanguageAvailable.getDictionaryList()}
+                        value={State.language.getStoredLanguageId()}
                     />
                 </div>
             </div>

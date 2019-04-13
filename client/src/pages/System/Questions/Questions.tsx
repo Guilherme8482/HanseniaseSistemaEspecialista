@@ -1,6 +1,8 @@
 import React, { Component, CSSProperties } from 'react'
 import { QuestionGroup } from './QuestionGroup';
-import { LanguageManager } from '../../../logic/LanguageManager';const style: {[id: string]: CSSProperties} = {
+import { State } from '../../../logic/State/Global';
+
+const style: {[id: string]: CSSProperties} = {
     container: {
         height: '100%',
         backgroundColor: '#E5FEFF',
@@ -12,7 +14,7 @@ import { LanguageManager } from '../../../logic/LanguageManager';const style: {[
 }
 export class Questions extends Component{
     render(){
-        const { system: { questionGroups }} = LanguageManager.getLanguageObject()
+        const { system: { questionGroups }} = State.language.getLanguageObject()
         const newQuestions = questionGroups.slice()
         const genetics = newQuestions.pop()
         if(genetics === undefined)

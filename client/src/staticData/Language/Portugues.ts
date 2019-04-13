@@ -1,151 +1,153 @@
-import { ClientLanguage } from "./Pattern";export const dictionary: ClientLanguage = {
+import { Language } from "./Pattern";
+
+export const dictionary: Readonly<Language> = {
     meta: {
-        displayName: 'English'
+        displayName: 'Português'
     },
     header: {
         menus: {
-            article: 'Article',
-            home: 'Home',
-            system: 'System'
+            article: 'Artigo',
+            home: 'Inicio',
+            system: 'Sistema'
         },
         title: 'SEPRE'
     },    
     tipBox: {
-        buttonName: 'Start',
-        description: 'You can use the expert system for predict reaction in a patient with the disease clicking the button below.'
+        buttonName: 'Iniciar',
+        description: 'Você pode usar o sistema especialista para prever reações em um paciente com a doença clicando no botão abaixo.'
     },
     home: {
-        content: `Leprosy is a disease that has affected the world's population for a long time and even then, difficulties still exist at the moment when it is necessary to define which clinical form of the disease the patient fits into. Doctors now define the patient's case from tests, and from his own professional experience. However, this often generates an inconsistency in the classification of the patient, since each leprosyist judges the patient according to his knowledge, which can lead to a wrong treatment or even avoid the occurrence of the incapacities associated with disease. An alternative to helping physicians develop a classification pattern was to create a computer system where it would give a hint as to what the probable case of the patient would be (PIBITI, 2014). However, this system was based on Ridley and Jopling's 1966 article, which uses an old classification methodology still in use by physicians. Therefore, verifying the reliability of this system has become crucial for a future system relationship with doctors. Objective: To compare, with the aid of artificial intelligence tools in data mining, the efficiency of the Ridley and Jopling classification method. Methodology: The database consists of 865 patients diagnosed with leprosy. This population sample was used by Weka software, based on artificial intelligence, to generate the possible results of the classifications. Results: Based on the data and results of the calculations performed on the bases, it was possible to create a rule file with more than 600 lines, and with each rule triggered by the system, the system updates the probability of the patient belonging to each one of clinical forms. For the rules to fire and the system to work, the user must insert the patient's clinical data into the system interface. Conclusions: The classification method studied, however well known and most used when it comes to leprosy, is far from considered perfect, since many cases of the disease do not present similarity to any of the types proposed by the classification and end up being determined as indeterminate cases.`,
-        title: 'Leprosy Specialist System'
+        content: 'A hanseníase é uma doença que afeta a população mundial há muito tempo e mesmo assim, nos dias de hoje, ainda ocorrem dificuldades no momento em que é necessário definir a qual forma clínica da doença o paciente se enquadra. Atualmente, os médicos definem o caso do paciente a partir de testes, e da própria experiência profissional. No entanto, tal fato, gera, muitas vezes, uma incoerência no momento da classificação do paciente, visto que cada hansenologista julga o paciente conforme seu conhecimento, o que pode levar a um tratamento errado ou até mesmo não evitar a ocorrência das incapacidades associadas à doença. Uma alternativa para ajudar os médicos a desenvolverem um padrão de classificação foi à criação de um sistema computacional onde ele forneceria um palpite sobre qual seria o provável caso do paciente (PIBITI, 2014). No entanto, este sistema foi baseado no artigo de Ridley e Jopling de 1966, que utiliza uma metodologia de classificação antiga ainda em uso dos médicos. Portanto, verificar a confiabilidade deste sistema se tornou crucial para um futuro relacionamento do sistema com os doutores.        Objetivo: Comparar, com o auxílio de ferramentas da inteligência artificial junto à mineração de dados, a eficiência do método de classificação de Ridley e Jopling.        Metodologia: A base de dados é formada por 865 pacientes diagnosticados com hanseníase. Esta amostra populacional foi utilizada pelo software Weka, baseado em inteligência artificial, para gerar os possíveis resultados das classificações.        Resultados: Com base nos dados e resultados dos cálculos executados em cima das bases, foi possível criar um arquivo de regras com mais de 600 linhas, sendo que a cada regra disparada pelo sistema, o sistema atualiza a probabilidade de o paciente pertencer a cada uma das formas clínicas. Para as regras dispararem e o sistema funcionar é necessário que o usuário insira na interface do sistema os dados clínicos do paciente.        Conclusões: O método de classificação estudado, por mais que seja famoso e o mais utilizado quando se fala em hanseníase, está longe de ser considerado perfeito, visto que muitos casos da doença não apresentam similaridade com nenhum dos tipos propostos pela classificação e acabam por ser determinados como casos indeterminados.',
+        title: 'Sistema Especialista para hanseníase'
     },
     article: {
         content: '',
-        title: 'Available Soon'
+        title: 'Disponível em breve'
     },
     system: {
         topBar: {
             database: {
-                label: 'Database',
+                label: 'Base de dados',
                 options: [
-                    'All',
-                    'Bauru',
-                    'Fortaleza',
-                    'Goiânia',
-                    'Manaus',
+                    {id: 'all', value: 'Completa'},
+                    {id: 'bauru', value: 'Bauru'},
+                    {id: 'fortaleza', value: 'Fortaleza'},
+                    {id: 'goiania', value: 'Goiânia'},
+                    {id: 'manaus', value: 'Manaus'}
                 ]
             },
-            clearButton: 'Clear',
-            rememberInformation: 'Remember information'
+            clearButton: 'Limpar',
+            rememberInformation: 'Lembrar informações'
         },
         questionGroups: [
             {
-                title: 'Sociodemographic Data',
+                title: 'Dados Sócio-demograficos',
                 questions: [
                     {
                         id: 0,
-                        title: 'Gender',
+                        title: 'Sexo',
                         options: [
-                            'Male',
-                            'Female'
+                            'Masculino',
+                            'Feminino'
                         ]
                     },
                     {
                         id: 1,
-                        title: 'Age group',
+                        title: 'Faixa etária',
                         options: [
-                            '0 to 19 yars',
-                            '20 to 39 yars',
-                            '40 to 64 yars',
-                            'Elderly',
+                            '0 a 19 anos',
+                            '20 a 39 anos',
+                            '40 a 64 anos',
+                            'Idoso'
                         ]
                     },
                     {
                         id: 5,
-                        title: 'Ethnicity',
+                        title: 'Etnia',
                         options: [
-                            'White',
-                            'Black',
-                            'Mixed race',
-                            'Yellow',
+                            'Branca',
+                            'Preta',
+                            'Parda',
+                            'Amarela'
                         ]
                     }
                 ]
             },
             {
-                title: 'Clinical exams',
+                title: 'Exames Clínicos',
                 questions: [
                     {
                         id: 9,
-                        title: 'Wound number',
+                        title: 'Número de lesões',
                         options: [
-                            '1 to 5',
-                            '6 to 11',
-                            'Diffuse Infiltration',
+                            '1 a 5',
+                            '6 a 11',
+                            'Infiltração difusa',
                         ]
                     },
                     {
                         id: 10,
-                        title: 'Type of wound',
+                        title: 'Tipo de lesão',
                         options: [
-                            'Plaques',
-                            'Papules',
-                            'Macules',
-                            'Nodules',
-                            'Diffuse Infiltration'
+                            'Placa',
+                            'Pápula',
+                            'Mácula',
+                            'Nódulo',
+                            'Infiltração difusa'
                         ]
                     },
                     {
                         id: 11,
-                        title: 'Wound color',
+                        title: 'Cor da lesão',
                         options: [
-                            'Normocrhomic',
-                            'Hypochromic',
-                            'Hyperchromic',
-                            'Erythematous',
+                            'Normocrômica',
+                            'Hipocrômica',
+                            'Hipercrômica',
+                            'Eritematosa'
                         ]
                     },
                     {
                         id: 12,
-                        title: 'Sensibility',
+                        title: 'Sensibilidade',
                         options: [
                             'Normal',
-                            'Impairment',
-                            'Dubious',
+                            'Alterada',
+                            'Duvidosa',
                         ]
                     }
                 ]
             },
             {
-                title: 'Clinical Data',
+                title: 'Dados Clínicos',
                 questions: [
                     {
                         id: 4,
-                        title: 'Ridley-Jopling Classification',
+                        title: 'Forma clínica',
                         options: [
                             'TT',
                             'BT',
                             'BB',
                             'BL',
                             'LL',
-                            'Indeterminate',
+                            'Indeterminada',
                         ]
                     },
                     {
                         id: 3,
-                        title: 'Multidrug Therapy',
+                        title: 'Tratamento',
                         options: [
-                            '6 months',
-                            '12 months',
+                            '6 meses',
+                            '12 meses'
                         ]
                     },
                     {
                         id: 2,
-                        title: 'First Signs and Symptoms (self report)',
+                        title: 'Tempo do primeiro sintoma (auto-relato)',
                         options: [
-                            '0 to 1 year',
-                            '1 to 2 years',
-                            '2 to 3 years',
-                            '3+ years',
+                            '0 a 1 ano',
+                            '1 a 2 anos',
+                            '2 a 3 anos',
+                            '3+ anos'
                         ]
                     }
                 ]
@@ -155,74 +157,74 @@ import { ClientLanguage } from "./Pattern";export const dictionary: ClientLangua
                 questions: [
                     {
                         id: 13,
-                        title: 'Bacilloscopic Index',
+                        title: 'Indíce baciloscópico',
                         options: [
-                            'Negative',
+                            'Negativo',
                             '1+',
                             '2+',
                             '3+',
                             '4+',
                             '5+',
-                            '6+',
+                            '6+'
                         ]
                     },
                     {
                         id: 14,
-                        title: 'Histological Index',
+                        title: 'Indíce histológico',
                         options: [
-                            'Negative',
+                            'Negativo',
                             '1+',
                             '2+',
                             '3+',
                             '4+',
                             '5+',
-                            '6+',
+                            '6+'
                         ]
                     },
                     {
                         id: 15,
-                        title: 'PGL-1 intensity',
+                        title: 'Intensidade de PGL-1',
                         options: [
-                            'Negative',
+                            'Negativo',
                             '1+',
                             '2+',
                             '3+',
-                            '4+',
+                            '4+'
                         ]
                     },
                 ]
             },
             {
-                title: 'Family history',
+                title: 'Histórico Familiar',
                 questions: [
                     {
                         id: 6,
-                        title: 'First Degree',
+                        title: 'Primeiro grau',
                         options: [
-                            'Yes',
-                            'No',
+                            'Sim',
+                            'Não'
                         ]
                     },
                     {
                         id: 7,
-                        title: 'Second Degree',
+                        title: 'Segundo grau',
                         options: [
-                            'Yes',
-                            'No',
+                            'Sim',
+                            'Não'
                         ]
                     },
                     {
                         id: 8,
-                        title: 'Contact',
+                        title: 'Contato',
                         options: [
-                            'Yes',
-                            'No',
+                            'Sim',
+                            'Não'
                         ]
                     }
                 ]
             },
             {
-                title: 'Genetic Data',
+                title: 'Dados Genéticos',
                 questions: [
                     {
                         id: 16,
@@ -285,7 +287,7 @@ import { ClientLanguage } from "./Pattern";export const dictionary: ClientLangua
                     },
 					{
                         id: 23,
-                        title: 'Unknown Gene rs4909863',
+                        title: 'Gene Desconhecido rs4909863',
                         options: [
                             'AA',
                             'AG',
@@ -294,7 +296,7 @@ import { ClientLanguage } from "./Pattern";export const dictionary: ClientLangua
                     },
 					{
                         id: 24,
-                        title: 'Unknown Gene rs4130173',
+                        title: 'Gene Desconhecido rs4130173',
                         options: [
                             'AA',
                             'AG',
@@ -420,18 +422,18 @@ import { ClientLanguage } from "./Pattern";export const dictionary: ClientLangua
             }
         ],
         reults: {
-            label: 'Results',
+            label: 'Resultados',
             noReaction: {
-                name: 'No reaction',
-                description: 'No reaction is expected.'
+                name: 'Sem reação',
+                description: 'Nenhuma reação é esperada.'
             },
             type1: {
-                name: 'Type 1 reaction',
-                description: 'Clinical manifestations of the RT1 form are infiltrations of old wound associated with the appearance of new wound, with forms of spots or infiltrated plaques. Erythema. Pain and / or thickening of peripheral nerves with loss of sensory-motor function.'
+                name: 'Reação tipo 1',
+                description: 'Manifestações clínicas da forma RT1 são infiltrações de lesões antigas associadas ao surgimento de novas lesões, com formas de manchas ou placas infiltradas. Eritema. Dor e/ou espessamento de nervos periféricos com perda da função sensitivo-motora.'
             },
             type2: {
-                name: 'Type 2 reaction',
-                description: 'RT2 is an acute, systemic inflammatory reaction involving the formation and deposits of immune complexes that circulate in the peripheral blood (type III and Gell & Coombs reaction). It is characterized by the onset of generalized erythematous wound, nodules and papules accompanied by fever.',
+                name: 'Reação tipo 2',
+                description: 'A RT2 é uma reação inflamatória aguda, sistêmica, que envolve a formação e depósitos de imunocomplexos que circulam pelo sangue periférico (reação do tipo III e Gell & Coombs).É caracterizada pelo surgimento de lesões eritematosas generalizadas, nódulos e pápulas acompanhadas de febre.'
             }
         }
     },
@@ -439,12 +441,12 @@ import { ClientLanguage } from "./Pattern";export const dictionary: ClientLangua
         content: 'PIBITI - Guilherme Rocha. 2016'
     },
     logs: {
-        loadingAlt: 'Loading...'
+        loadingAlt: 'Carregando...'
     },
     error: {
         badResult: {
-            title: 'Error: Could not perform the diagnosis!',
-            description: 'Restart the page and if the error persists contact the developer.'
+            title: 'Erro: Não foi possível realizar o diagnóstico!',
+            description: 'Reinicie a página e se o erro persistir contate o desenvolvedor.'
         }
     }
 }

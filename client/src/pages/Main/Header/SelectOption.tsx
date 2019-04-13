@@ -1,6 +1,7 @@
 import React, { Component, CSSProperties } from 'react'
 import languageIcon from '../../../images/translate-white.png'
-import { LanguageManager } from '../../../logic/LanguageManager';const style: {[id: string]: CSSProperties} = {
+
+const style: {[id: string]: CSSProperties} = {
     container: {
         height: '100%',
         width: '100%',

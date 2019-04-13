@@ -1,10 +1,8 @@
 import React, { Component, CSSProperties } from 'react'
-import { LanguageManager } from '../../logic/LanguageManager';
 import { Select } from '../Global/Select';
 import { Toggle } from '../Global/Toggle';
-import { Diagnostic } from '../../logic/Diagnostic';
 import { Button } from '../Global/Button';
-import { DatabaseFilter } from '../../logic/DatabaseFilter';
+import { State } from '../../logic/State/Global';
 
 const style: {[id: string]: CSSProperties} = {
     container: {
@@ -28,17 +26,17 @@ const style: {[id: string]: CSSProperties} = {
 }
 export class TopBar extends Component{
     clearAnswers(){
-        Diagnostic.clearAnswers()
-        Diagnostic.startDiagnosis()
+        State.question.clearAnswers()
+        State.flags.startDiagnosis()
     }
     render(){
-        const { system: { topBar: { database, clearButton, rememberInformation}}} = LanguageManager.getLanguageObject()
+        const { system: { topBar: { database, clearButton, rememberInformation}}} = State.language.getLanguageObject()
         return <div style={style.container}>
             <div style={style.side}>
                 <div style={style.font}>{database.label}</div>
                 <Select
-                    action={value => DatabaseFilter.refreshDatabase(Number(value))}
-                    options={database.options.map((o, i) => ({id: i.toString(), value: o}))}
+                    action={value => State.databaseFilter.refreshDatabase(value)}
+                    options={database.options}
                 />
             </div>
             <div style={style.side}>
@@ -46,7 +44,7 @@ export class TopBar extends Component{
                     {clearButton}
                 </Button>
                 <div style={style.font}>{rememberInformation}</div>
-                <Toggle action={Diagnostic.setStoredSaveDataVariable} checked={Diagnostic.getSaveDataVariable()}/>
+                <Toggle action={v => State.flags.isToSaveData = v} checked={State.flags.isToSaveData}/>
             </div>
         </div>
     }

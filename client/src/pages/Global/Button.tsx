@@ -1,5 +1,7 @@
 import React, { Component, CSSProperties } from 'react'
-import { Link } from 'react-router-dom';const style: {[id: string]: CSSProperties} = {
+import { Link } from 'react-router-dom';
+
+const style: {[id: string]: CSSProperties} = {
     button: {
         border: '0',
         padding: '0 35px 0 35px',

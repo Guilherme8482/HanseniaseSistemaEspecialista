@@ -1,8 +1,7 @@
 import React, { Component, CSSProperties } from 'react'
 import { gStyle } from '../../Global/Style'
-import { Question } from '../../../language/Pattern';
-import { Diagnostic } from '../../../logic/Diagnostic';
-import { DatabaseFilter } from '../../../logic/DatabaseFilter';
+import { Question } from '../../../staticData/Language/Pattern';
+import { State } from '../../../logic/State/Global';
 
 const style: {[id: string]: CSSProperties} = {
     title: {
@@ -26,17 +25,17 @@ interface Props {
 export class SingleQuestion extends Component<Props>{
     state = {
         disabled: false,
-        value: Diagnostic.getAnswer(this.props.question.id)
+        value: State.question.getAnswer(this.props.question.id)
     }
     componentWillMount(){
         const id = this.props.question.id
-        Diagnostic.setAnswerListener(id, value => this.setState({value}))
-        DatabaseFilter.setAnswerListener(id, disabled => this.setState({disabled}))
+        State.question.setAnswerListener(id, value => this.setState({value}))
+        State.databaseFilter.setAnswerListener(id, disabled => this.setState({disabled}))
     }
     handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const { question: { id }} = this.props
-        Diagnostic.setAnswer(id, Number(event.target.value))
-        Diagnostic.startDiagnosis()
+        State.question.setAnswer(id, Number(event.target.value))
+        State.flags.startDiagnosis()
     }
     render(){
         const { disabled, value } = this.state

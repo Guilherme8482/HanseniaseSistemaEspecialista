@@ -1,9 +1,12 @@
 import React, { Component, CSSProperties } from 'react'
 import { SingleResult } from './SingleResult';
-import { LanguageManager } from '../../../logic/LanguageManager';
-import { ResultType as RT, Diagnostic, ProcessResponse } from '../../../logic/Diagnostic';
 import loading from '../../../images/carregando.gif'
-import { ErrorBox } from './ErrorBox';const style: {[id: string]: CSSProperties} = {
+import { ErrorBox } from './ErrorBox';
+import { EndPoints } from '../../../logic/EndPoints';
+import { State } from '../../../logic/State/Global';
+import { ResultType as RT } from '../../../logic/State/Managers/Flags'
+
+const style: {[id: string]: CSSProperties} = {
     container: {
         backgroundColor: '#ece5ce',
         display: 'flex',
@@ -40,25 +43,29 @@ export class Results extends Component{
     state = {
         isLoading: false,
         haveAnError: false,
-        results: [
-            0,
-            0,
-            0
-        ]
+        results: [0, 0, 0]
     }
     componentWillMount(){
-        Diagnostic.setResultListener(this.refreshResults)
-        Diagnostic.startDiagnosis()
+        State.flags.setResultListener(this.refreshResults)
+        State.flags.startDiagnosis()
+    }
+    async getData(): Promise<{results: number[]}>{
+        const dbId = State.databaseFilter.convertDatabaseIdForNeticaCode()
+        const data = [...State.question.getAnswers(), dbId]
+        const res = await EndPoints.process(data)
+        return {
+            results: [res.sr, res.r1, res.r2]
+        }
     }
     refreshResults = async () => {
         let results = [0,0,0], 
-            haveAnError = false
-        this.setState({
-            isLoading: true,
-            haveAnError
-        })        
+            haveAnError = false      
         try{
-            const response = await Diagnostic.getData()
+            this.setState({
+                isLoading: true,
+                haveAnError
+            })
+            const response = await this.getData()
             results = response.results.map(n => 0| n)
         }
         catch{
@@ -80,7 +87,7 @@ export class Results extends Component{
         return greater.index
     }
     render(){
-        const { system: { reults }, logs: { loadingAlt }, error: { badResult }} = LanguageManager.getLanguageObject()
+        const { system: { reults }, logs: { loadingAlt }, error: { badResult }} = State.language.getLanguageObject()
         const { results, isLoading, haveAnError } = this.state
         const dinamic = {
             loading: {

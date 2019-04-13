@@ -1,6 +1,6 @@
 import React, { Component, CSSProperties } from 'react'
-import { LanguageManager } from '../../logic/LanguageManager';
 import { Button } from '../Global/Button';
+import { State } from '../../logic/State/Global';
 
 const style: {[id: string]: CSSProperties} = {
     container: {
@@ -57,7 +57,7 @@ interface Props{
 }
 export class Text extends Component<Props>{
     render(){
-        const { tipBox: { description, buttonName }} = LanguageManager.getLanguageObject()
+        const { tipBox: { description, buttonName }} = State.language.getLanguageObject()
         const { title, content} = this.props
         return <div style={style.container}>
             <div style={style.content}>

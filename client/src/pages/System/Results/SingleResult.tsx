@@ -1,5 +1,7 @@
 import React, { Component, CSSProperties } from 'react'
-import { Result } from '../../../language/Pattern';const style: {[id: string]: CSSProperties} = {
+import { Result } from '../../../staticData/Language/Pattern';
+
+const style: {[id: string]: CSSProperties} = {
     superContainer: {
         width: '100%',
         padding: '3%',

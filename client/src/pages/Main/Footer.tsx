@@ -1,5 +1,7 @@
 import React, { Component, CSSProperties } from 'react'
-import { LanguageManager } from '../../logic/LanguageManager';const style: {[id: string]: CSSProperties} = {
+import { State } from '../../logic/State/Global';
+
+const style: {[id: string]: CSSProperties} = {
     footer:{
         backgroundColor: '#03A9F4',
         width: '100%',
@@ -16,7 +18,7 @@ import { LanguageManager } from '../../logic/LanguageManager';const style: {[id:
 }
 export class Footer extends Component{
     render(){
-        const { footer: { content } } = LanguageManager.getLanguageObject()
+        const { footer: { content } } = State.language.getLanguageObject()
         return <footer  style={style.footer}>
             {content}
         </footer >

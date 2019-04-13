@@ -1,5 +1,5 @@
 import React, { Component, CSSProperties } from 'react'
-import { DatabaseFilter } from '../../logic/DatabaseFilter';
+import { State } from '../../logic/State/Global';
 
 const style: {[id: string]: CSSProperties} = {
     container: {
@@ -41,7 +41,7 @@ export class Select extends Component <{
     render(){
         const { action, options} = this.props
         const { state: { isMouseHover } } = this
-        const value = DatabaseFilter.getDatabaseId()
+        const value = State.databaseFilter.getDatabaseId()
         const dinamic = {
             container: {
                 ...style.container,

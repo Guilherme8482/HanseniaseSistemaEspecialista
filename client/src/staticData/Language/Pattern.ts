@@ -16,53 +16,56 @@ export interface BadResult {
     title: string
     description: string
 }
-export interface ClientLanguage{
+export interface Language{
     meta: {
         displayName: string
-    },
+    }
     header: {
-        title: string,
+        title: string
         menus: {
-            home: string,
-            system: string,
+            home: string
+            system: string
             article: string
         }
     }
     tipBox: {
-        description: string,
+        description: string
         buttonName: string
     }
     home: {
-        title: string,
+        title: string
         content: string
     }
     article: {
-        title: string,
+        title: string
         content: string
     }
     system: {
         topBar: {
             database: {
-                label: string,
-                options: string[]
-            },
-            clearButton: string,
+                label: string
+                options: {
+                    id: string
+                    value: string
+                }[]
+            }
+            clearButton: string
             rememberInformation: string
         }
-        questionGroups: QuestionGroup[],
+        questionGroups: QuestionGroup[]
         reults: {
             label: string
-            noReaction: Result,
-            type1: Result,
+            noReaction: Result
+            type1: Result
             type2: Result
         }
-    },
+    }
     footer: {
         content: string
-    },
+    }
     logs: {
         loadingAlt: string
-    },
+    }
     error: {
         badResult: BadResult
     }

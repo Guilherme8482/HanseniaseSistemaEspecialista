@@ -1,5 +1,7 @@
 import React, { Component, CSSProperties } from 'react'
-import { BadResult } from '../../../language/Pattern';const style: {[id: string]: CSSProperties} = {
+import { BadResult } from '../../../staticData/Language/Pattern';
+
+const style: {[id: string]: CSSProperties} = {
     errorSuperContainer: {
         width: '100%',
         padding: '3%'
