@@ -43,7 +43,6 @@ const style: {[id: string]: CSSProperties} = {
 export class Header extends Component {
     render(){
         const { header: { title, menus} } = LanguageManager.getLanguageObject()
-        console.log(DatabaseFilter.getDatabaseId())
         return <div style={style.container}>
             <div style={style.content}>
                 <div style={style.title}>

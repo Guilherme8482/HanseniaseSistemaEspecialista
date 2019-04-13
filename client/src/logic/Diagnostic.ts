@@ -7,9 +7,6 @@ export enum ResultType {
     Type2
 }
 
-function timeout(t: number){
-    return new Promise(r => setTimeout(r, t))
-}
 export interface ProcessResponse {
     results: number[];
 }
@@ -20,12 +17,12 @@ export class Diagnostic {
     public static saveData = Diagnostic.getStoredSaveDataVariable()
 
     private static getStoredAnswers(): number[]{
-        const a = localStorage.getItem('storedAnswer') || '[]'
-        return JSON.parse(a)
+        const value = localStorage.getItem('storedAnswer') || '[]'
+        return JSON.parse(value)
     }
     static getStoredSaveDataVariable(): boolean{
-        const a = localStorage.getItem('saveData') || 'true'
-        return Boolean(JSON.parse(a))
+        const value = localStorage.getItem('saveData') || 'true'
+        return Boolean(JSON.parse(value))
     }
     static getSaveDataVariable(){
         return Diagnostic.saveData
@@ -60,8 +57,9 @@ export class Diagnostic {
         Diagnostic.saveStoredAnswers()
     }
     static clearAnswers(){
-        Diagnostic.answers
-            .forEach((_, i) => Diagnostic.setAnswer(i, 0))
+        for(const [index] of Diagnostic.answers.entries())
+            if(Diagnostic.getAnswer(index) !== -1)
+                Diagnostic.setAnswer(index, 0)
     }
     static startDiagnosis(){
         if(Diagnostic.resultListener)

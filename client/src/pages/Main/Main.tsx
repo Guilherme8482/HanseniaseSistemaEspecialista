@@ -1,12 +1,15 @@
 import React, { Component, CSSProperties } from 'react'
-import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import { Header } from './Header/Header';
 import { Footer } from './Footer';
 import { Home } from '../Text/Home';
 import { Article } from '../Text/Article';
-import { System } from '../System/System';const style: {[id: string]: CSSProperties} = {
+import { System } from '../System/System';
+
+const style: {[id: string]: CSSProperties} = {
     background: {
-        height: '100%',        minHeight: '100%',
+        height: '100%',
+        minHeight: '100%',
         display: 'grid',
         gridTemplateRows: '1fr auto',
     },

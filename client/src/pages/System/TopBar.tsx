@@ -26,9 +26,8 @@ const style: {[id: string]: CSSProperties} = {
         color: '#505050',
     }
 }
-
 export class TopBar extends Component{
-    clearAnswers = () => {
+    clearAnswers(){
         Diagnostic.clearAnswers()
         Diagnostic.startDiagnosis()
     }
