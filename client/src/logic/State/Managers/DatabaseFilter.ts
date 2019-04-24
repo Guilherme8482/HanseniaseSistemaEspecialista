@@ -7,7 +7,8 @@ export class DatabaseFilter {
 	get databaseId(): string {
 		const data = localStorage.getItem('databaseId')
 		return (
-			JSON.parse(data || 'null') || QuestionsByDatabase.defaultDatabaseId
+			JSON.parse(data || 'null') ||
+			QuestionsByDatabase.defaultDatabaseId()
 		)
 	}
 	set databaseId(id: string) {
