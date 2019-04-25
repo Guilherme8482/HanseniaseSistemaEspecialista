@@ -1,5 +1,11 @@
 node_modules
 dist
+package-lock.json
+src/AccesHistoryData.json
 client/node_modules
 client/dist
 client/build
+client/package-lock.json
+client/package-lock.json
+client/package-lock.json
+client/package-lock.json
