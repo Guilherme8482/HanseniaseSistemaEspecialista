@@ -19,6 +19,7 @@ export class SiteController {
 		AccessHistory.addAccess(req)
 		let responseData: ProcessResponse = {}
 		try {
+			if(typeof req.query.json !== 'string') return
 			const { dados } = JSON.parse(req.query.json)
 			if (!dados || !(dados instanceof Array))
 				throw new Error('Data input not found or not compatible.')
