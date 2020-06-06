@@ -9,11 +9,7 @@ export interface ProcessResponse {
 export class SiteController {
 	constructor(server: Express) {
 		server.get('/process', this.process)
-		server.get('/home', this.site)
-		server.get('/system', this.site)
-		server.get('/article', this.site)
-		server.get('*', this.siteRedirect)
-		server.get('/', this.siteRedirect)
+		server.get('*', this.site)
 	}
 	async process(req: Request, res: Response) {
 		AccessHistory.addAccess(req)
@@ -33,9 +29,5 @@ export class SiteController {
 	site(req: Request, res: Response) {
 		AccessHistory.addAccess(req)
 		res.sendFile(process.cwd() + '/client/build/index.html')
-	}
-	siteRedirect(req: Request, res: Response) {
-		AccessHistory.addAccess(req)
-		res.redirect('/home')
 	}
 }

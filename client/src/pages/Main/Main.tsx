@@ -1,5 +1,5 @@
 import React, { Component, CSSProperties } from 'react'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import { Header } from './Header/Header';
 import { Footer } from './Footer';
 import { Home } from '../Text/Home';
@@ -32,6 +32,7 @@ export class Main extends Component{
                 <div style={style.container}>
                     <Header/>
                     <div style={style.content}>
+                        <Route path="/" component={() => <Redirect to="/home"/>}/>
                         <Route path="/home" component={Home} />
                         <Route path="/system" component={System} />
                         <Route path="/article" component={Article} />
