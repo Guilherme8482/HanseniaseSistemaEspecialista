@@ -3,7 +3,6 @@ dist
 package-lock.json
 client/node_modules
 client/dist
-client/build
 client/package-lock.json
 client/package-lock.json
 client/package-lock.json
