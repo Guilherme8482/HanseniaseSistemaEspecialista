@@ -286,6 +286,7 @@ export const dictionary: Readonly<Language> = {
                         ]
                     },
 					{
+						disable: true,
                         id: 23,
                         title: 'Unknown Gene rs4909863',
                         options: [
@@ -295,6 +296,7 @@ export const dictionary: Readonly<Language> = {
                         ]
                     },
 					{
+						disable: true,
                         id: 24,
                         title: 'Unknown Gene rs4130173',
                         options: [
@@ -401,6 +403,7 @@ export const dictionary: Readonly<Language> = {
                         ]
                     },
 					{
+						disable: true,
                         id: 36,
                         title: 'PTPN1 - rs6020566',
                         options: [
@@ -410,6 +413,7 @@ export const dictionary: Readonly<Language> = {
                         ]
                     },
 					{
+						disable: true,
                         id: 37,
                         title: 'PTPN1 - rs6067472',
                         options: [

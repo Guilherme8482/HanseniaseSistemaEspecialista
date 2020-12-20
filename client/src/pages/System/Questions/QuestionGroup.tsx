@@ -82,7 +82,7 @@ export class QuestionGroup extends Component<{
             <div style={dinamic.questionsContainer}>
                 <div style={style.questionsContent}>
                     {
-                        questions.map((q, id) => <SingleQuestion key={id} question={q} extraSpace={extraSpace}/>)
+                        questions.map((q, id) => q.disable ? null : <SingleQuestion key={id} question={q} extraSpace={extraSpace}/>)
                     }
                 </div>
             </div>

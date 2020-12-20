@@ -4,6 +4,7 @@ export interface Result {
     description: string
 }
 export interface Question{
+	disable?: boolean
     id: number
     title: string
     options: string[]
