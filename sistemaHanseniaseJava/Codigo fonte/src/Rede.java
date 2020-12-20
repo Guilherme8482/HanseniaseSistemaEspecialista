@@ -201,6 +201,10 @@ public class Rede {
     private Node getNode(final int index) throws Exception {
     	Node node = nodes[index];
     	if(node == null) {
+    		/*
+    		 * Erro geralmente ocorre quando se tenta acessar um node indisponivel na base.
+    		 * Consultar o path da base de dadso.
+    		 * */
     		throw new Exception("Node não instanciado. Indice: " + index);
     	}
     	return node;

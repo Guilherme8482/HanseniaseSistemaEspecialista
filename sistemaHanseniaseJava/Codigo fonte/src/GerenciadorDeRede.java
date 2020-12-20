@@ -4,7 +4,10 @@
  */
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.Stream;
+
 import org.json.*;
 
 import norsys.netica.NeticaException;
@@ -15,16 +18,18 @@ public class GerenciadorDeRede {
 	Rede rede;
 	String[][] dicionario;
 	
-	GerenciadorDeRede(String []parametros) throws IOException, NeticaException{
+	GerenciadorDeRede(String []params) throws IOException, NeticaException{
 		try {
+			int[] parametros = Arrays.asList(params).stream().mapToInt(Integer::parseInt).toArray();
 			carregarDicionario();
 			if(parametros.length != dicionario.length) { 
 				throw new Exception("Parametros inadequados. Esperado: " + dicionario.length + "  Recebido: " + parametros.length);
 			}			
-			if(Integer.parseInt(parametros[parametros.length - 1]) >= dicionario[dicionario.length - 1].length) {
+			String[] pathDasBases = dicionario[dicionario.length - 1];
+			if(parametros[parametros.length - 1] >= pathDasBases.length) {
 				throw new Exception("Parametros inadequados");
 			}			
-			rede = new Rede(dicionario[dicionario.length - 1][Integer.parseInt(parametros[parametros.length - 1])]);
+			rede = new Rede(pathDasBases[parametros[parametros.length - 1]]);
 			atualizarRede(parametros);
 		}
 		catch(Exception e) {
@@ -55,20 +60,20 @@ public class GerenciadorDeRede {
 		}
 		
 	}
-	private void atualizarRede(String []parametros){
+	private void atualizarRede(int []parametros){
 		try {
 			if(errorMsg != null) return;
 			for(int i = 0; i < parametros.length - 1; ++i) {
 				/* Pular variaveis excluidas*/
 				if(dicionario[i].length == 0) continue;
-				if(Integer.parseInt(parametros[i]) == 0) {
+				if(parametros[i] == 0) {
 					rede.clearNode(i);
 				}
-				else if(Integer.parseInt(parametros[i]) >= dicionario[i].length) {
-					throw new Exception("Parametro indisponivel. Esperado: <" + dicionario[i].length + "  Recebido" + Integer.parseInt(parametros[i]));
+				else if(parametros[i] >= dicionario[i].length) {
+					throw new Exception("Parametro indisponivel. Esperado: <" + dicionario[i].length + "  Recebido" + parametros[i]);
 				}
-				else if(Integer.parseInt(parametros[i]) > 0){
-					rede.setNode(i, dicionario[i][Integer.parseInt(parametros[i])]);
+				else if(parametros[i] > 0){
+					rede.setNode(i, dicionario[i][parametros[i]]);
 				}
 				//-1 nada a fazer
 			}
