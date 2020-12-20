@@ -42,8 +42,8 @@ public class Rede {
         Node RS95;
         
         //Novos dados Geneticos 05/2017
-        Node RS490;
-        Node RS413;
+//        Node RS490;
+//        Node RS413;
         Node RS647;
         Node RS786;
         Node RS155;
@@ -55,8 +55,8 @@ public class Rede {
         Node RS476;
         Node RS376;
         Node RS388;
-        Node RS602;
-        Node RS606;
+//        Node RS602;
+//        Node RS606;
         
         boolean valid;
     
@@ -106,8 +106,8 @@ public class Rede {
             RS95  = net.getNode ("rs4833095");
             
             //Novos dados geneticos
-            RS490 = net.getNode ("rs4909863");
-            RS413 = net.getNode ("rs4130173");
+//            RS490 = net.getNode ("rs4909863");
+//            RS413 = net.getNode ("rs4130173");
             RS647 = net.getNode ("rs6478108");
             RS786 = net.getNode ("rs7863183");
             RS155 = net.getNode ("rs1555457");
@@ -119,8 +119,8 @@ public class Rede {
             RS476 = net.getNode ("rs4768236");
             RS376 = net.getNode ("rs3761863");
             RS388 = net.getNode ("rs3886747");
-            RS602 = net.getNode ("rs6020566");
-            RS606 = net.getNode ("rs6067472");
+//            RS602 = net.getNode ("rs6020566");
+//            RS606 = net.getNode ("rs6067472");
             
             net.compile();
             valid = true;
@@ -148,8 +148,8 @@ public class Rede {
             nodes[20] = RS41;
             nodes[21] = RS18;
             nodes[22] = RS95;
-            nodes[23] = RS490;
-            nodes[24] = RS413;
+//            nodes[23] = RS490;
+//            nodes[24] = RS413;
             nodes[25] = RS647;
             nodes[26] = RS786;
             nodes[27] = RS155;
@@ -161,8 +161,9 @@ public class Rede {
             nodes[33] = RS476;
             nodes[34] = RS376;
             nodes[35] = RS388;
-            nodes[36] = RS602;
-            nodes[37] = RS606;
+//            nodes[36] = RS602;
+//            nodes[37] = RS606;
+            
         }
         catch (Exception e) {
             System.out.print("Erro na abertura do arquivo:\n" + file_rede + "\n\nFavor verificar se este arquivo esta disponivel na pasta \"Data Files\".");
@@ -170,9 +171,9 @@ public class Rede {
         }
     }
     
-    void clearNode(int index) {
+    void clearNode(int index) throws Exception {
         try {
-			nodes[index].finding().clear();
+        	getNode(index).finding().clear();
 		} catch (NeticaException e) {
 			e.printStackTrace();
 		}
@@ -189,12 +190,20 @@ public class Rede {
             value = value.replace("+", "_");*/
         	
             
-            nodes[index].finding().clear();
-            nodes[index].finding().enterState(value);  
+        	getNode(index).finding().clear();
+        	getNode(index).finding().enterState(value);  
         }
         catch (Exception e) {            
             e.printStackTrace();
         }
+    }
+    
+    private Node getNode(final int index) throws Exception {
+    	Node node = nodes[index];
+    	if(node == null) {
+    		throw new Exception("Node não instanciado. Indice: " + index);
+    	}
+    	return node;
     }
     
     
@@ -238,8 +247,8 @@ public class Rede {
             RS95.finding().clear();
             
             //Novos dados geneticos
-            RS490.finding().clear();
-            RS413.finding().clear();
+//            RS490.finding().clear();
+//            RS413.finding().clear();
             RS647.finding().clear();
             RS786.finding().clear();
             RS155.finding().clear();
@@ -251,8 +260,8 @@ public class Rede {
             RS476.finding().clear();
             RS376.finding().clear();
             RS388.finding().clear();
-            RS602.finding().clear();
-            RS606.finding().clear();
+//            RS602.finding().clear();
+//            RS606.finding().clear();
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -728,8 +737,8 @@ public class Rede {
     //NOVOS DADOS GENETICOS    
     public void set_RS490(String value){
         try{
-            RS490.finding().clear();
-            RS490.finding().enterState(value);  
+//            RS490.finding().clear();
+//            RS490.finding().enterState(value);  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -738,7 +747,7 @@ public class Rede {
 
     public void clear_RS490(){
         try{
-            RS490.finding().clear();  
+//            RS490.finding().clear();  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -747,8 +756,8 @@ public class Rede {
      
     public void set_RS413(String value){
         try{
-            RS413.finding().clear();
-            RS413.finding().enterState(value);  
+//            RS413.finding().clear();
+//            RS413.finding().enterState(value);  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -757,7 +766,7 @@ public class Rede {
 
     public void clear_RS413(){
         try{
-            RS413.finding().clear();  
+//            RS413.finding().clear();  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -975,8 +984,8 @@ public class Rede {
      
     public void set_RS602(String value){
         try{
-            RS602.finding().clear();
-            RS602.finding().enterState(value);  
+//            RS602.finding().clear();
+//            RS602.finding().enterState(value);  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -985,7 +994,7 @@ public class Rede {
 
     public void clear_RS602(){
         try{
-            RS602.finding().clear();  
+//            RS602.finding().clear();  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -994,8 +1003,8 @@ public class Rede {
      
     public void set_RS606(String value){
         try{
-            RS606.finding().clear();
-            RS606.finding().enterState(value);  
+//            RS606.finding().clear();
+//            RS606.finding().enterState(value);  
         }
         catch (Exception e) {            
             e.printStackTrace();
@@ -1004,7 +1013,7 @@ public class Rede {
 
     public void clear_RS606(){
         try{
-            RS606.finding().clear();  
+//            RS606.finding().clear();  
         }
         catch (Exception e) {            
             e.printStackTrace();
