@@ -442,7 +442,7 @@ export const dictionary: Readonly<Language> = {
         }
     },
     footer: {
-        content: 'PIBITI - Guilherme Rocha. 2016'
+        content: 'Sistema Especialista para Previsão de Risco de Estados Reacionais em Hanseníase - 2020'
     },
     logs: {
         loadingAlt: 'Carregando...'

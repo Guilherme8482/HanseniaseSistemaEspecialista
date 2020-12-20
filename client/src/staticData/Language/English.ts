@@ -442,7 +442,7 @@ export const dictionary: Readonly<Language> = {
         }
     },
     footer: {
-        content: 'PIBITI - Guilherme Rocha. 2016'
+        content: 'Expert System for Risk Prediction of Reactional States in Leprosy - 2020'
     },
     logs: {
         loadingAlt: 'Loading...'
