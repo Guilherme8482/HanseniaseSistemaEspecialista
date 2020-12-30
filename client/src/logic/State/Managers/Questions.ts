@@ -5,8 +5,8 @@ export class QuestionsState {
 	private answerListeners: ((value: number) => void)[] = []
 
 	private get storedAnswers(): number[] {
-		const value = localStorage.getItem('storedAnswer') || '[]'
-		return JSON.parse(value)
+		const value = JSON.parse(localStorage.getItem('storedAnswer') || 'null')
+		return value || [...Array(38)].map(() => -1)
 	}
 	private saveStoredAnswers = () => {
 		if (State.flags.isToSaveData)

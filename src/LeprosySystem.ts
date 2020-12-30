@@ -4,23 +4,31 @@ import { promisify } from 'util';
 const exec = promisify(ex)
 
 function generateCommandBySO(){
-    if(process.platform == 'linux')
-        return `cd ./sistemaHanseniaseJava/linux && LD_LIBRARY_PATH=lib/NeticaJ/x86 && export LD_LIBRARY_PATH && java -jar "SistemaHans.jar" `
-    else if(process.platform == 'win32')
-        return `cd ./sistemaHanseniaseJava/win32 & set PATH=lib/NeticaJ/x86;%PATH% & java -jar "SistemaHans.jar" `
-    throw new Error('Unsupported operating system.')
+    if(process.platform !== 'win32')        {
+		throw new Error('Unsupported operating system.')
+	}
+	return `cd ./sistemaHanseniaseJava/win32 & set PATH=lib/NeticaJ/x86;%PATH% & java -jar "SistemaHanseniase.jar" `
 }
-export interface Resultado {
-    sr: number
-    r1: number
-    r2: number
+
+interface InternalServerError{
+	error: boolean
+	errorMsg: string
 }
+interface ProcessResponse {
+	resultado: {
+		sr: number
+		r1: number
+		r2: number
+	}
+}
+export type Output = InternalServerError | ProcessResponse
+
 export class LeprosySystem{
     static readonly command = generateCommandBySO()
     
     static async process(dados: number[]){
         const command = LeprosySystem.command + dados.join(' ')
         const output = (await exec(command)).stdout
-        return <Resultado>JSON.parse(output)
+        return JSON.parse(output) as Output
     }
 }
