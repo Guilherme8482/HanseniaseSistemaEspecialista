@@ -77,9 +77,9 @@ export class SingleResult extends Component<Props>{
         }
         return <div style={style.superContainer}>
             <div
-                style={style.container}
-                onMouseEnter={this.changeMouseIsOver}
-                onMouseLeave={this.changeMouseIsOver}
+				style={style.container}				
+				onMouseOver={this.changeMouseIsOver}
+				onMouseOut={this.changeMouseIsOver}
             >
                 <div style={dinamic.resultBar}>
                     <div style={style.resultBarTitle}>

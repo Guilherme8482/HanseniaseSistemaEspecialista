@@ -68,7 +68,8 @@ export class Results extends Component{
             const response = await this.getData()
             results = response.results.map(n => 0| n)
         }
-        catch{
+        catch(error){
+			console.error(error)
             haveAnError = true
         }
         finally{

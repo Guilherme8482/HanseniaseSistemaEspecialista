@@ -32,7 +32,7 @@ export class Main extends Component{
                 <div style={style.container}>
                     <Header/>
                     <div style={style.content}>
-                        <Route path="/" component={() => <Redirect to="/home"/>}/>
+                        <Route exact path="/" component={() => <Redirect to="/home"/>}/>
                         <Route path="/home" component={Home} />
                         <Route path="/system" component={System} />
                         <Route path="/article" component={Article} />

@@ -8,11 +8,9 @@ interface InternalServerError{
 }
 
 interface ProcessResponse {
-	resultado: {
-		sr: number
-		r1: number
-		r2: number
-	}
+	sr: number
+	r1: number
+	r2: number
 }
 
 type Response = InternalServerError | ProcessResponse
@@ -20,8 +18,7 @@ type Response = InternalServerError | ProcessResponse
 export class EndPoints {
 	static async process(dados: number[]) {
 		const response: Response = await get('/process', { dados })
-		console.log(response)
 		if ('error' in response) throw new Error(response.errorMsg)
-		return response.resultado
+		return response
 	}
 }
