@@ -7,7 +7,12 @@ function generateCommandBySO(){
     if(process.platform !== 'win32')        {
 		throw new Error('Unsupported operating system.')
 	}
-	return `cd ./sistemaHanseniaseJava/win32 & set PATH=lib/NeticaJ/x86;%PATH% & java -jar "SistemaHanseniase.jar" `
+	const commands = [
+		'cd ./sistemaHanseniaseJava',
+		'set PATH=lib/NeticaJ/x64;%PATH%',
+		'java -jar "SistemaHanseniase.jar" ',
+	]
+	return commands.join(' & ')
 }
 
 interface InternalServerError{
