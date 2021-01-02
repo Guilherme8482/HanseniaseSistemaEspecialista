@@ -60,7 +60,7 @@ public class Rede {
         
         boolean valid;
     
-    public Rede(String file_rede){
+    public Rede(String file_rede) throws NeticaException{
         try{
         	Environ env = new Environ ("+BastosL/PUCPR/120,310-4-A/35764");
         }
@@ -71,104 +71,97 @@ public class Rede {
         
     }
     
-    public void initialize(String file_rede){
-        try{                        
-            net = new Net (new Streamer (file_rede));
-            //Caracteristicas Gerais
-            Gender  = net.getNode ("Sexo");
-            META  = net.getNode ("Tipo_de_Rea__o");
-            AGE  = net.getNode ("Idade");
-            YR_FIRST_SYN  = net.getNode ("Primeiros_Sinais_e_Sintomas");
-            TREATMENT  = net.getNode ("Forma_de_Tratamento");
-            CLINICAL_FORM  = net.getNode ("Forma_Cl_nica"); 
-            ETINIA = net.getNode ("Etnia");  
-            
-            //Historico Familiar
-            PRIMEIRO_GRAU  = net.getNode ("Primeiro_Grau");
-            SEGUNDO_GRAU  = net.getNode ("Segundo_Grau");
-            CONTATO  = net.getNode ("Contato");
-            
-            //Exames Clinicos
-            LESOES  = net.getNode ("N_mero_de_Les_es");
-            TIPO_LESAO  = net.getNode ("Tipo_de_Les_o");
-            COR_LESAO  = net.getNode ("Cor_da_Les_o");
-            SENSE  = net.getNode ("Sensibilidade");
-            
-            BACILO  = net.getNode ("Indice_Bacilosc_pico");
-            HISTO  = net.getNode ("Indice_Histol_gico");
-            PGL  = net.getNode ("Intensidade_do_PGL_1_");
-            RS32D  = net.getNode ("rs2069832");
-            RS40D  = net.getNode ("rs2069840");
-            RS45D  = net.getNode ("rs2069845");
-            RS95D  = net.getNode ("rs1800795");   
-            RS41  = net.getNode ("rs8057341");
-            RS18  = net.getNode ("rs5743618");
-            RS95  = net.getNode ("rs4833095");
-            
-            //Novos dados geneticos
+    public void initialize(String file_rede) throws NeticaException{                      
+        net = new Net (new Streamer (file_rede));
+        //Caracteristicas Gerais
+        Gender  = net.getNode ("Sexo");
+        META  = net.getNode ("Tipo_de_Rea__o");
+        AGE  = net.getNode ("Idade");
+        YR_FIRST_SYN  = net.getNode ("Primeiros_Sinais_e_Sintomas");
+        TREATMENT  = net.getNode ("Forma_de_Tratamento");
+        CLINICAL_FORM  = net.getNode ("Forma_Cl_nica"); 
+        ETINIA = net.getNode ("Etnia");  
+        
+        //Historico Familiar
+        PRIMEIRO_GRAU  = net.getNode ("Primeiro_Grau");
+        SEGUNDO_GRAU  = net.getNode ("Segundo_Grau");
+        CONTATO  = net.getNode ("Contato");
+        
+        //Exames Clinicos
+        LESOES  = net.getNode ("N_mero_de_Les_es");
+        TIPO_LESAO  = net.getNode ("Tipo_de_Les_o");
+        COR_LESAO  = net.getNode ("Cor_da_Les_o");
+        SENSE  = net.getNode ("Sensibilidade");
+        
+        BACILO  = net.getNode ("Indice_Bacilosc_pico");
+        HISTO  = net.getNode ("Indice_Histol_gico");
+        PGL  = net.getNode ("Intensidade_do_PGL_1_");
+        RS32D  = net.getNode ("rs2069832");
+        RS40D  = net.getNode ("rs2069840");
+        RS45D  = net.getNode ("rs2069845");
+        RS95D  = net.getNode ("rs1800795");   
+        RS41  = net.getNode ("rs8057341");
+        RS18  = net.getNode ("rs5743618");
+        RS95  = net.getNode ("rs4833095");
+        
+        //Novos dados geneticos
 //            RS490 = net.getNode ("rs4909863");
 //            RS413 = net.getNode ("rs4130173");
-            RS647 = net.getNode ("rs6478108");
-            RS786 = net.getNode ("rs7863183");
-            RS155 = net.getNode ("rs1555457");
-            RS318 = net.getNode ("rs3181348");
-            RS709 = net.getNode ("rs7090170");
-            RS108 = net.getNode ("rs10826321");
-            RS187 = net.getNode ("rs1875147");
-            RS791 = net.getNode ("rs7916086");
-            RS476 = net.getNode ("rs4768236");
-            RS376 = net.getNode ("rs3761863");
-            RS388 = net.getNode ("rs3886747");
+        RS647 = net.getNode ("rs6478108");
+        RS786 = net.getNode ("rs7863183");
+        RS155 = net.getNode ("rs1555457");
+        RS318 = net.getNode ("rs3181348");
+        RS709 = net.getNode ("rs7090170");
+        RS108 = net.getNode ("rs10826321");
+        RS187 = net.getNode ("rs1875147");
+        RS791 = net.getNode ("rs7916086");
+        RS476 = net.getNode ("rs4768236");
+        RS376 = net.getNode ("rs3761863");
+        RS388 = net.getNode ("rs3886747");
 //            RS602 = net.getNode ("rs6020566");
 //            RS606 = net.getNode ("rs6067472");
-            
-            net.compile();
-            valid = true;
-            
-            nodes[0] = Gender;
-            nodes[1] = AGE;
-            nodes[2] = YR_FIRST_SYN;
-            nodes[3] = TREATMENT;
-            nodes[4] = CLINICAL_FORM;
-            nodes[5] = ETINIA;
-            nodes[6] = PRIMEIRO_GRAU;
-            nodes[7] = SEGUNDO_GRAU;
-            nodes[8] = CONTATO;
-            nodes[9] = LESOES;
-            nodes[10] = TIPO_LESAO;
-            nodes[11] = COR_LESAO;
-            nodes[12] = SENSE;
-            nodes[13] = BACILO;
-            nodes[14] = HISTO;
-            nodes[15] = PGL;
-            nodes[16] = RS32D;
-            nodes[17] = RS40D;
-            nodes[18] = RS45D;
-            nodes[19] = RS95D;
-            nodes[20] = RS41;
-            nodes[21] = RS18;
-            nodes[22] = RS95;
+        
+        net.compile();
+        valid = true;
+        
+        nodes[0] = Gender;
+        nodes[1] = AGE;
+        nodes[2] = YR_FIRST_SYN;
+        nodes[3] = TREATMENT;
+        nodes[4] = CLINICAL_FORM;
+        nodes[5] = ETINIA;
+        nodes[6] = PRIMEIRO_GRAU;
+        nodes[7] = SEGUNDO_GRAU;
+        nodes[8] = CONTATO;
+        nodes[9] = LESOES;
+        nodes[10] = TIPO_LESAO;
+        nodes[11] = COR_LESAO;
+        nodes[12] = SENSE;
+        nodes[13] = BACILO;
+        nodes[14] = HISTO;
+        nodes[15] = PGL;
+        nodes[16] = RS32D;
+        nodes[17] = RS40D;
+        nodes[18] = RS45D;
+        nodes[19] = RS95D;
+        nodes[20] = RS41;
+        nodes[21] = RS18;
+        nodes[22] = RS95;
 //            nodes[23] = RS490;
 //            nodes[24] = RS413;
-            nodes[25] = RS647;
-            nodes[26] = RS786;
-            nodes[27] = RS155;
-            nodes[28] = RS318;
-            nodes[29] = RS709;
-            nodes[30] = RS108;
-            nodes[31] = RS187;
-            nodes[32] = RS791;
-            nodes[33] = RS476;
-            nodes[34] = RS376;
-            nodes[35] = RS388;
+        nodes[25] = RS647;
+        nodes[26] = RS786;
+        nodes[27] = RS155;
+        nodes[28] = RS318;
+        nodes[29] = RS709;
+        nodes[30] = RS108;
+        nodes[31] = RS187;
+        nodes[32] = RS791;
+        nodes[33] = RS476;
+        nodes[34] = RS376;
+        nodes[35] = RS388;
 //            nodes[36] = RS602;
 //            nodes[37] = RS606;
-            
-        }
-        catch (Exception e) {
-            System.out.print("Erro na abertura do arquivo:\n" + file_rede + "\n\nFavor verificar se este arquivo esta disponivel na pasta \"Data Files\".");
-            //e.printStackTrace();
-        }
     }
     
     void clearNode(int index) throws Exception {

@@ -33,7 +33,7 @@ public class GerenciadorDeRede {
 			atualizarRede(parametros);
 		}
 		catch(Exception e) {
-			errorMsg = "[A] " + e.getMessage();
+			errorMsg = "[GerenciadorDeRede()] " + e.getMessage();
 		}
 	}
 	private String readFile(String arquivo) throws FileNotFoundException {
@@ -56,7 +56,7 @@ public class GerenciadorDeRede {
 			}
 		}
 		catch(Exception e) {
-			errorMsg = "[B] " + e.getMessage();
+			errorMsg = "[carregarDicionario()] " + e.getMessage();
 		}
 		
 	}
@@ -80,7 +80,7 @@ public class GerenciadorDeRede {
 			
 		}
 		catch(Exception e) {
-			errorMsg = "[C] " + e.getMessage();
+			errorMsg = "[atualizarRede()] " + e.getMessage();
 		}
 		
 	}
