@@ -3,7 +3,7 @@ import { promisify } from 'util';
 
 const exec = promisify(ex)
 
-function generateCommandBySO(){
+function generateCommand(){
     if(process.platform !== 'win32')        {
 		throw new Error('Unsupported operating system.')
 	}
@@ -29,7 +29,7 @@ interface ProcessResponse {
 export type Output = InternalServerError | ProcessResponse
 
 export class LeprosySystem{
-    static readonly command = generateCommandBySO()
+    static readonly command = generateCommand()
     
     static async process(dados: number[]){
         const command = LeprosySystem.command + dados.join(' ')

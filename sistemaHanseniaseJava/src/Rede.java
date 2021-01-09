@@ -1,8 +1,3 @@
-/**
- *
- * @author Luis Felipe
- */
-
 import norsys.netica.*;
 
 public class Rede {
@@ -173,17 +168,7 @@ public class Rede {
     }
     public void setNode(int index, String value){
         try{
-        	/*value = value.replace("ç", "_");   
-            value = value.replace("ã", "_");
-            value = value.replace(" ", "_");
-            value = value.replace("ô", "_");
-            value = value.replace("á", "_");
-            value = value.replace("ó", "_");
-            
-            value = value.replace("+", "_");*/
-        	
-            
-        	getNode(index).finding().clear();
+			getNode(index).finding().clear();
         	getNode(index).finding().enterState(value);  
         }
         catch (Exception e) {            
@@ -196,9 +181,9 @@ public class Rede {
     	if(node == null) {
     		/*
     		 * Erro geralmente ocorre quando se tenta acessar um node indisponivel na base.
-    		 * Consultar o path da base de dadso.
+    		 * Consultar o path da base de dados.
     		 * */
-    		throw new Exception("Node não instanciado. Indice: " + index);
+    		throw new Exception("Node nï¿½o instanciado. Indice: " + index);
     	}
     	return node;
     }
