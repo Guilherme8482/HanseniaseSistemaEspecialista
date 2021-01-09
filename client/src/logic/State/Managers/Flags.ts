@@ -1,3 +1,5 @@
+import { sepreStore } from "./LocalStore";
+
 export enum ResultType {
 	NoReaction,
 	Type1,
@@ -7,11 +9,10 @@ export class Flags {
 	private resultListener?: () => void
 
 	get isToSaveData() {
-		const value = localStorage.getItem('saveData') || 'true'
-		return Boolean(JSON.parse(value))
+		return sepreStore.get().saveData
 	}
 	set isToSaveData(value: boolean) {
-		localStorage.setItem('saveData', JSON.stringify(value))
+		sepreStore.set({saveData: value})
 	}
 	setResultListener = (listener: () => void) => {
 		this.resultListener = listener

@@ -1,17 +1,15 @@
 import { LanguageAvailable } from '../../../staticData/Language/Available'
+import { sepreStore } from "./LocalStore";
 
 export class LanguageManager {
 	get languageObject() {
 		return LanguageAvailable.get(this.storedLanguageId)
 	}
 	get storedLanguageId() {
-		return (
-			localStorage.getItem('languageId') ||
-			LanguageAvailable.defaultLanguageId()
-		)
+		return sepreStore.get().languageId
 	}
 	set storedLanguageId(id: string) {
-		localStorage.setItem('languageId', id)
+		sepreStore.set({languageId: id})
 	}
 	set languageId(id: string) {
 		LanguageAvailable.get(id)

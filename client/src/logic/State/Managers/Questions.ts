@@ -1,25 +1,22 @@
 import { State } from '../Global'
+import { sepreStore } from "./LocalStore";
 
 export class QuestionsState {
-	readonly answers: number[] = this.storedAnswers
+	readonly answers = this.storedAnswers
 	private answerListeners: ((value: number) => void)[] = []
 
 	private get storedAnswers(): number[] {
-		const value = JSON.parse(localStorage.getItem('storedAnswer') || 'null')
-		return value || [...Array(38)].map(() => -1)
+		return sepreStore.get().answers
 	}
 	private saveStoredAnswers = () => {
 		if (State.flags.isToSaveData)
-			localStorage.setItem('storedAnswer', JSON.stringify(this.answers))
+			sepreStore.set({answers: this.answers})
 	}
 	getAnswer = (id: number) => {
-		const answer = this.answers[id]
-		if (answer !== null && answer !== undefined) return answer
-		const allowed = State.databaseFilter.questionIsAllowed(id)
-		this.setAnswer(id, allowed ? 0 : -1)
-		return 0
+		return this.answers[id]
 	}
 	setAnswer = (id: number, value: number) => {
+		value = value === 0 ? -1 : value
 		this.answers[id] = value
 		const listener = this.answerListeners[id]
 		if (listener) listener(value)
@@ -27,7 +24,7 @@ export class QuestionsState {
 	}
 	clearAnswers = () => {
 		for (const [index] of this.answers.entries())
-			if (this.getAnswer(index) !== -1) this.setAnswer(index, 0)
+			if (this.getAnswer(index) !== -1) this.setAnswer(index, -1)
 	}
 	setAnswerListener = (id: number, listener: (value: number) => void) => {
 		this.answerListeners[id] = listener

@@ -1,21 +1,18 @@
 import { QuestionsByDatabase } from '../../../staticData/QuestionsByDatabase'
 import { State } from '../Global'
+import { sepreStore } from "./LocalStore";
 
 export class DatabaseFilter {
 	private answerListeners: ((value: boolean) => void)[] = []
 
 	get databaseId(): string {
-		const data = localStorage.getItem('databaseId')
-		return (
-			JSON.parse(data || 'null') ||
-			QuestionsByDatabase.defaultDatabaseId()
-		)
+		return sepreStore.get().databaseId
 	}
 	set databaseId(id: string) {
 		if (!QuestionsByDatabase.idList.includes(id))
 			throw new Error('Database id unavailable. id = ' + id)
 		if (State.flags.isToSaveData)
-			localStorage.setItem('databaseId', JSON.stringify(id))
+			sepreStore.set({databaseId: id})
 	}
 	convertDatabaseIdForNeticaCode = () => {
 		const id = QuestionsByDatabase.idList.indexOf(this.databaseId)

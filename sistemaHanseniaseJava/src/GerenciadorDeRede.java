@@ -60,10 +60,11 @@ public class GerenciadorDeRede {
 		try {
 			if (errorMsg != null)
 				return;
-			for (int i = 0; i < parametros.length - 1; ++i) {
-				/* Pular variaveis excluidas */
-				if (dicionario[i].length == 0)
+			for (int i = 0; i < parametros.length - 1; ++i) {				
+				if (dicionario[i].length == 0){
+					/* Pular variaveis excluidas */
 					continue;
+				}
 				if (parametros[i] == 0) {
 					rede.clearNode(i);
 				} else if (parametros[i] >= dicionario[i].length) {
