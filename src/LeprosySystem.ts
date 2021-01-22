@@ -3,13 +3,20 @@ import { promisify } from 'util';
 
 const exec = promisify(ex)
 
+async function isJava64Bit(){
+	const {stderr} = await exec('java -version')
+	return stderr.match(/64-Bit/g) !== null
+}
+
 function generateCommand(){
     if(process.platform !== 'win32')        {
 		throw new Error('Unsupported operating system.')
 	}
 	const commands = [
 		'cd ./sistemaHanseniaseJava',
-		'set PATH=lib/NeticaJ/x64;%PATH%',
+		isJava64Bit()
+			? 'set PATH=lib/NeticaJ/x64;%PATH%'
+			: 'set PATH=lib/NeticaJ/x86;%PATH%',
 		'java -jar "SistemaHanseniase.jar" ',
 	]
 	return commands.join(' & ')
@@ -31,9 +38,19 @@ export type Output = InternalServerError | ProcessResponse
 export class LeprosySystem{
     static readonly command = generateCommand()
     
-    static async process(dados: number[]){
-        const command = LeprosySystem.command + dados.join(' ')
-        const output = (await exec(command)).stdout
-        return JSON.parse(output) as Output
+    static async process(dados: number[]){		
+        try{
+			const command = LeprosySystem.command + dados.join(' ')
+			const output = (await exec(command)).stdout
+			return JSON.parse(output) as Output
+		}catch(error){
+			const errorMsg = error instanceof Error 
+				? error.message 
+				: error.toString()
+			return <InternalServerError>{
+				error: true,
+				errorMsg,
+			}
+		}        
     }
 }
