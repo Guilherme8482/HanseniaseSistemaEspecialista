@@ -1,5 +1,8 @@
-import { exec as ex } from 'child_process'
-import { promisify } from 'util';
+// import { exec as ex } from 'child_process'
+// import { promisify } from 'util';
+
+const { exec: ex } = require('child_process')
+const { promisify } = require('util')
 
 const exec = promisify(ex)
 
@@ -8,13 +11,13 @@ async function isJava64Bit(){
 	return stderr.match(/64-Bit/g) !== null
 }
 
-function generateCommand(){
+async function generateCommand(){
     if(process.platform !== 'win32')        {
 		throw new Error('Unsupported operating system.')
 	}
 	const commands = [
 		'cd ./sistemaHanseniaseJava',
-		isJava64Bit()
+		(await isJava64Bit())
 			? 'set PATH=lib/NeticaJ/x64;%PATH%'
 			: 'set PATH=lib/NeticaJ/x86;%PATH%',
 		'java -jar "SistemaHanseniase.jar" ',
@@ -35,8 +38,9 @@ interface ProcessResponse {
 }
 export type Output = InternalServerError | ProcessResponse
 
+generateCommand().then(command => LeprosySystem.command = command)
 export class LeprosySystem{
-    static readonly command = generateCommand()
+    static command: string
     
     static async process(dados: number[]){		
         try{
