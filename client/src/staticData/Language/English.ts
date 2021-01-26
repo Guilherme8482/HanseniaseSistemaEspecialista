@@ -153,7 +153,7 @@ export const dictionary: Readonly<Language> = {
                 ]
             },
             {
-                title: 'Dados Laboratoriais',
+                title: 'Laboratory Data',
                 questions: [
                     {
                         id: 13,
