@@ -74,7 +74,7 @@ export const dictionary: Readonly<Language> = {
                 ]
             },
             {
-                title: 'Clinical exams',
+                title: 'Clinical Data',
                 questions: [
                     {
                         id: 9,
@@ -114,12 +114,7 @@ export const dictionary: Readonly<Language> = {
                             'Impairment',
                             'Dubious',
                         ]
-                    }
-                ]
-            },
-            {
-                title: 'Clinical Data',
-                questions: [
+                    },
                     {
                         id: 4,
                         title: 'Ridley-Jopling Classification',

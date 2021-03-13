@@ -74,7 +74,7 @@ export const dictionary: Readonly<Language> = {
                 ]
             },
             {
-                title: 'Exames Clínicos',
+                title: 'Dados Clínicos',
                 questions: [
                     {
                         id: 9,
@@ -114,12 +114,7 @@ export const dictionary: Readonly<Language> = {
                             'Alterada',
                             'Duvidosa',
                         ]
-                    }
-                ]
-            },
-            {
-                title: 'Dados Clínicos',
-                questions: [
+                    },
                     {
                         id: 4,
                         title: 'Forma clínica',
