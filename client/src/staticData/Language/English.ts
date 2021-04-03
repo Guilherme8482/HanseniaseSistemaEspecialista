@@ -338,7 +338,7 @@ export const dictionary: Readonly<Language> = {
                     },
 					{
                         id: 29,
-                        title: 'ENSG - rs7090170',
+                        title: 'ENSG00000235140 - rs7090170',
                         options: [
                             'AA',
                             'AG',
@@ -347,7 +347,7 @@ export const dictionary: Readonly<Language> = {
                     },
 					{
                         id: 30,
-                        title: 'ENSG - rs10826321',
+                        title: 'ENSG00000235140 - rs10826321',
                         options: [
                             'CT',
                             'TT'
@@ -355,7 +355,7 @@ export const dictionary: Readonly<Language> = {
                     },
 					{
                         id: 31,
-                        title: 'ENSG - rs1875147',
+                        title: 'ENSG00000235140 - rs1875147',
                         options: [
                             'CC',
                             'CT',
@@ -364,7 +364,7 @@ export const dictionary: Readonly<Language> = {
                     },
 					{
                         id: 32,
-                        title: 'ENSG - rs7916086',
+                        title: 'ENSG00000235140 - rs7916086',
                         options: [
                             'AA',
                             'AG',
@@ -437,7 +437,7 @@ export const dictionary: Readonly<Language> = {
         }
     },
     footer: {
-        content: 'Expert System for Risk Prediction of Reactional States in Leprosy - 2020'
+        content: 'Expert System for Risk Prediction of Reactional States in Leprosy - 2021'
     },
     logs: {
         loadingAlt: 'Loading...'
